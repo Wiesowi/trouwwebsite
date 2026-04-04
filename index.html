@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onze Trouwdag - Wierd & Bette</title>
+    <link rel="icon" type="image/png" href="favicon.png?v=2">
+	
+    <meta property="og:title" content="Wierd & Bette gaan trouwen!">
+    <meta property="og:description" content="Op 2 augustus 2026 vieren wij de liefde op De Havixhorst.">
+    <meta property="og:image" content="De_Havixhorst.jpg">
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        html { scroll-behavior: smooth; }
+
+        :root {
+            --color-primary: #D7A7B7; /* Dusty Rose */
+            --color-secondary: #F7F5F0; /* Crème */
+            --color-accent: #B8860B;   /* Goud */
+            --color-text: #374151;     
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--color-text);
+            background-color: var(--color-secondary);
+        }
+
+        h1, h2, h3, .font-display { font-family: 'Playfair Display', serif; }
+
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: white;
+            transition: all 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #C58D9E; 
+            transform: translateY(-1px);
+        }
+
+        .color-swatch {
+            width: 28px; height: 28px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 0.5rem;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .swatch-yellow { background-color: #FEF9C7; }
+        .swatch-fuchsia { background-color: #FF00FF; }
+        .swatch-black { background-color: #000000; }
+    </style>
+</head>
+<body class="antialiased min-h-screen">
+
+    <header class="sticky top-0 z-50 shadow-md bg-white/95 backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+            <a href="#home" class="font-display text-xl font-bold text-gray-800 hover:text-[#D7A7B7] transition">
+                Wierd & Bette
+            </a>
+            <nav class="hidden md:flex space-x-8 font-medium">
+                <a href="#programma" class="text-gray-600 hover:text-[#D7A7B7]">Programma</a>
+                <a href="#datum" class="text-gray-600 hover:text-[#D7A7B7]">Locatie</a>
+                <a href="#rsvp" class="text-gray-600 hover:text-[#D7A7B7]">RSVP</a>
+                <a href="#info" class="text-gray-600 hover:text-[#D7A7B7]">Praktisch</a>
+            </nav>
+            <button id="menu-toggle" class="md:hidden text-gray-600 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-200 p-4 space-y-2">
+            <a href="#programma" class="block py-2">Programma</a>
+            <a href="#datum" class="block py-2">Locatie</a>
+            <a href="#rsvp" class="block py-2">RSVP</a>
+            <a href="#info" class="block py-2">Praktisch</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="relative h-[85vh] flex items-center justify-center bg-cover bg-center" 
+                 style="background-image: url('De_Havixhorst.jpg');">
+            <div class="absolute inset-0 bg-black opacity-30"></div>
+            <div class="relative z-10 text-center p-10 bg-white/80 backdrop-blur-md rounded-2xl shadow-2xl max-w-xl mx-4 border-t-8 border-[#D7A7B7]">
+                <h3 class="text-lg text-[#B8860B] uppercase tracking-[0.3em] mb-4">Save the Date</h3>
+                <h1 class="font-display text-6xl sm:text-8xl font-extrabold text-gray-900 leading-tight">Wierd & Bette</h1>
+                <p class="mt-6 text-3xl text-gray-700 font-bold">02 . 08 . 2026</p>
+                <div class="mt-8 flex justify-center gap-4">
+                    <a href="#rsvp" class="btn-primary py-3 px-8 rounded-full font-semibold shadow-lg">RSVP</a>
+                    <a href="#programma" class="bg-white text-[#D7A7B7] border-2 border-[#D7A7B7] py-3 px-8 rounded-full font-semibold hover:bg-[#D7A7B7] hover:text-white transition">Programma</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 bg-white">
+            <div class="max-w-5xl mx-auto px-6 text-center">
+                <h2 class="font-display text-4xl font-semibold mb-10 text-gray-800 italic">Wij kunnen niet wachten!</h2>
+                <div id="countdownTimer" class="flex justify-center flex-wrap gap-4 sm:gap-10">
+                    <div class="flex flex-col items-center p-8 m-2 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border-b-8 border-[#D7A7B7] min-w-[120px] sm:min-w-[150px]">
+                        <span id="days" class="text-5xl sm:text-7xl font-extrabold text-gray-800 font-display mb-3">00</span>
+                        <span class="text-sm uppercase tracking-widest text-gray-400 mt-2">Dagen</span>
+                    </div>
+                    <div class="flex flex-col items-center p-8 m-2 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border-b-8 border-[#D7A7B7] min-w-[120px] sm:min-w-[150px]">
+                        <span id="hours" class="text-5xl sm:text-7xl font-extrabold text-gray-800 font-display mb-3">00</span>
+                        <span class="text-sm uppercase tracking-widest text-gray-400 mt-2">Uren</span>
+                    </div>
+                    <div class="flex flex-col items-center p-8 m-2 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border-b-8 border-[#D7A7B7] min-w-[120px] sm:min-w-[150px]">
+                        <span id="minutes" class="text-5xl sm:text-7xl font-extrabold text-gray-800 font-display mb-3">00</span>
+                        <span class="text-sm uppercase tracking-widest text-gray-400 mt-2">Minuten</span>
+                    </div>
+                    <div class="flex flex-col items-center p-8 m-2 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border-b-8 border-[#D7A7B7] min-w-[120px] sm:min-w-[150px]">
+                        <span id="seconds" class="text-5xl sm:text-7xl font-extrabold text-[#B8860B] font-display mb-3">00</span>
+                        <span class="text-sm uppercase tracking-widest text-gray-400 mt-2">Sec</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="programma" class="py-24 bg-[#D7A7B7]/5 border-y border-gray-100">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <div class="mb-12">
+                    <h2 class="font-display text-5xl font-semibold mb-4 text-gray-800">Dagplanning</h2>
+                    <div class="h-1.5 w-24 bg-[#D7A7B7] mx-auto rounded-full"></div>
+                </div>
+                <div class="bg-white rounded-3xl shadow-xl p-8 sm:px-12 max-w-3xl mx-auto border border-gray-100 text-left">
+                    <div id="prog-ontvangst" class="border-b border-gray-100 last:border-0 py-6 flex flex-row items-center justify-start gap-4 sm:gap-8 text-xl sm:text-2xl">
+                        <span class="font-bold text-[#D7A7B7] min-w-[140px] sm:min-w-[180px] flex-shrink-0">16:15 - 17:00</span>
+                        <span class="font-medium text-gray-800">Ontvangst</span>
+                    </div>
+                    <div id="prog-diner" class="border-b border-gray-100 last:border-0 py-6 flex flex-row items-center justify-start gap-4 sm:gap-8 text-xl sm:text-2xl">
+                        <span class="font-bold text-[#D7A7B7] min-w-[140px] sm:min-w-[180px] flex-shrink-0">17:00 - 19:00</span>
+                        <span class="font-medium text-gray-800">Diner</span>
+                    </div>
+                    <div class="border-b border-gray-100 last:border-0 py-6 flex flex-row items-center justify-start gap-4 sm:gap-8 text-xl sm:text-2xl">
+                        <span class="font-bold text-[#D7A7B7] min-w-[140px] sm:min-w-[180px] flex-shrink-0">19:00 - 19:30</span>
+                        <span id="prog-avond-ontvangst" class="font-medium text-gray-800">Ontvangst avondgasten</span>
+                    </div>
+                    <div class="border-b border-gray-100 last:border-0 py-6 flex flex-row items-center justify-start gap-4 sm:gap-8 text-xl sm:text-2xl">
+                        <span class="font-bold text-[#D7A7B7] min-w-[140px] sm:min-w-[180px] flex-shrink-0">19:30 - 20:30</span>
+                        <span class="font-medium text-gray-800">Ceremonie</span>
+                    </div>
+                    <div class="border-b border-gray-100 last:border-0 py-6 flex flex-row items-center justify-start gap-4 sm:gap-8 text-xl sm:text-2xl">
+                        <span class="font-bold text-[#D7A7B7] min-w-[140px] sm:min-w-[180px] flex-shrink-0">20:30 - 00:00</span>
+                        <span class="font-medium text-gray-800">Feest!</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="datum" class="py-24 bg-white text-center">
+            <div class="max-w-6xl mx-auto px-6">
+                <h2 class="font-display text-5xl font-semibold mb-4 text-gray-800">De Locatie</h2>
+                <p class="text-xl text-[#B8860B] font-medium uppercase tracking-widest mb-16">Zondag 2 Augustus 2026</p>
+                <div class="grid md:grid-cols-2 gap-10 text-left items-stretch">
+                    <div class="bg-[#D7A7B7]/5 p-10 rounded-3xl border-l-8 border-[#D7A7B7] shadow-sm flex flex-col justify-center border border-gray-100">
+                        <h3 class="font-display text-4xl font-bold mb-6 text-gray-800">De Havixhorst</h3>
+                        <p class="text-lg text-gray-700 leading-relaxed">Wij vieren onze volledige dag op het prachtige landgoed De Havixhorst. Van de ceremonie tot het knalfeest.</p>
+                        <p class="mt-4"><strong class="text-[#D7A7B7] font-bold">Adres:</strong> Schiphorsterweg 34-36, 7966 AC De Schiphorst</p>
+                        
+                        <div class="mt-8 flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+                            <a href="https://maps.google.com/?q=Schiphorsterweg+34-36,+7966+AC+De+Schiphorst" target="_blank" class="inline-block text-[#B8860B] font-bold hover:underline">Open in Google Maps →</a>
+                            <span class="hidden sm:inline-block text-gray-300">|</span>
+                            
+                            <a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20260802T140000Z%0ADTEND:20260802T220000Z%0ASUMMARY:Bruiloft Wierd %26 Bette%0ADESCRIPTION:Wij vieren onze liefde op landgoed De Havixhorst!%0ALOCATION:Schiphorsterweg 34-36\, 7966 AC De Schiphorst%0AEND:VEVENT%0AEND:VCALENDAR" 
+                               download="Bruiloft_Wierd_en_Bette.ics" 
+                               class="group flex items-center space-x-2 bg-white px-3 py-1.5 rounded-full border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 text-sm">
+                                <svg class="w-4 h-4 text-gray-500 group-hover:text-[#D7A7B7] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                </svg>
+                                <span class="text-gray-600 font-medium group-hover:text-gray-900 transition-colors">Zet in agenda</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="overflow-hidden rounded-3xl shadow-lg border border-gray-100 min-h-[300px]">
+                        <img src="De_Havixhorst.jpg" loading="lazy" class="w-full h-full object-cover transform hover:scale-105 transition duration-700" alt="Landgoed De Havixhorst">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="rsvp" class="py-24 bg-[#D7A7B7]/5 border-y border-gray-100">
+            <div class="max-w-3xl mx-auto px-6 text-center">
+                <h2 class="font-display text-5xl font-semibold mb-4 text-gray-800">Aanwezigheid</h2>
+                <p class="text-lg text-gray-600 mb-4">Gebruik de code op je uitnodiging om je aanwezigheid te bevestigen.</p>
+                <p class="text-sm text-[#D7A7B7] font-medium italic mb-10">We hebben ervoor gekozen om deze gelegenheid zonder kids te vieren. Bedankt voor jullie begrip.</p>
+
+                <div id="codeEntry" class="bg-white p-10 rounded-3xl shadow-xl space-y-6 border border-gray-100 max-w-md mx-auto">
+                    <input type="text" id="accessCode" class="w-full p-4 border-2 border-[#D7A7B7]/20 rounded-xl text-center text-2xl font-bold uppercase" placeholder="CODE">
+                    <button id="startRsvpButton" class="w-full btn-primary py-4 rounded-xl text-xl font-bold shadow-md">Inloggen</button>
+                    <p id="codeError" class="text-red-500 hidden italic font-bold">Ongeldige code.</p>
+                </div>
+
+                <form id="rsvpForm" class="hidden bg-white p-10 rounded-3xl shadow-xl space-y-8 border border-gray-100 text-left">
+                    <h3 id="guestTypeMessage" class="text-center font-display text-3xl text-[#D7A7B7]"></h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div><label class="block font-bold mb-2">Naam Contactpersoon</label><input type="text" id="contactName" required class="w-full p-3 bg-gray-50 border rounded-xl" placeholder="Volledige naam"></div>
+                        <div><label class="block font-bold mb-2">E-mailadres</label><input type="email" id="email" required class="w-full p-3 bg-gray-50 border rounded-xl" placeholder="je@email.nl"></div>
+                    </div>
+                    <div>
+                        <label class="block font-bold mb-2">Aantal personen</label>
+                        <select id="numGuests" class="w-full p-3 bg-gray-50 border rounded-xl"><option value="1">1 Persoon</option><option value="2" selected>2 Personen</option><option value="3">3 Personen</option><option value="4">4 Personen</option><option value="5">5 Personen</option><option value="6">6 Personen</option></select>
+                    </div>
+                    <div id="guestNamesContainer" class="p-4 bg-gray-50 rounded-xl space-y-4"></div>
+                    
+                    <div id="attendanceGroup">
+                        <label class="block font-bold mb-3 italic">Ik/wij zijn aanwezig bij:</label>
+                        <div class="space-y-3">
+                            <label class="flex items-center gap-3 p-4 bg-white border border-gray-100 rounded-xl cursor-pointer" id="labelDinner"><input type="checkbox" id="attendDinner" class="w-6 h-6 accent-[#D7A7B7]"> <span class="text-lg">Diner</span></label>
+                            <label class="flex items-center gap-3 p-4 bg-white border border-gray-100 rounded-xl cursor-pointer"><input type="checkbox" id="attendCeremony" class="w-6 h-6 accent-[#D7A7B7]"> <span class="text-lg">Ceremonie</span></label>
+                            <label class="flex items-center gap-3 p-4 bg-white border border-gray-100 rounded-xl cursor-pointer"><input type="checkbox" id="attendParty" class="w-6 h-6 accent-[#D7A7B7]"> <span class="text-lg">Feestavond</span></label>
+                        </div>
+                    </div>
+                    
+                    <div id="dietaryWishesGroup"><label class="block font-bold mb-2 text-gray-700">Dieetwensen / Allergieën</label><textarea id="dietaryWishes" rows="2" class="w-full p-3 bg-gray-50 border rounded-xl" placeholder="Bijv. Vega, Glutenvrij..."></textarea></div>
+                    <button type="submit" id="submitRsvp" class="w-full btn-primary py-4 rounded-xl text-xl font-bold flex items-center justify-center gap-2"><span id="btnText">Bevestigen</span><div id="loader" class="hidden animate-spin h-5 w-5 border-2 border-white border-t-transparent rounded-full"></div></button>
+                </form>
+            </div>
+        </section>
+
+        <section id="info" class="py-24 bg-white">
+            <div class="max-w-6xl mx-auto px-6">
+                <h2 class="font-display text-5xl font-semibold mb-16 text-gray-800 text-center">Praktische Informatie</h2>
+                <div class="grid md:grid-cols-2 gap-10 text-left">
+                    <div class="p-10 bg-[#D7A7B7]/5 rounded-3xl shadow-sm space-y-6 border border-gray-100">
+                        <h3 class="font-display text-4xl font-bold text-gray-800">Dresscode</h3>
+                        <p class="text-2xl font-bold text-[#D7A7B7]">Black Tie</p>
+                        <p class="text-lg text-gray-600 leading-relaxed">Wij hopen op een feestelijke dag in stijl. Wij vragen de heren in tuxedo en de dames in een mooie avondjurk te komen.</p>
+                        
+                        <div class="pt-4 border-t border-gray-200">
+                            <p class="font-bold mb-4 text-gray-700 text-sm uppercase tracking-widest font-sans">Themakleuren:</p>
+                            <div class="flex flex-wrap gap-6 mb-8">
+                                <span class="flex items-center text-gray-700 font-medium"><span class="color-swatch swatch-yellow"></span> Botergeel</span>
+                                <span class="flex items-center text-gray-700 font-medium"><span class="color-swatch swatch-fuchsia"></span> Fuchsia</span>
+                                <span class="flex items-center text-gray-700 font-medium"><span class="color-swatch swatch-black"></span> Zwart</span>
+                            </div>
+
+                            <div class="flex justify-start">
+                                <a href="https://pin.it/1k7ykhDEy" target="_blank" rel="noopener noreferrer" class="-ml-3 group flex items-center space-x-3 bg-white px-4 py-2.5 rounded-full border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300">
+                                    <svg class="w-6 h-6 text-[#bd081c] group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.965 1.406-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.334.334 0 01.076.315c-.099.413-.319 1.299-.363 1.479-.058.239-.19.29-.44.174-1.643-.762-2.669-3.155-2.669-5.08 0-4.136 3.007-7.932 8.665-7.932 4.548 0 8.082 3.239 8.082 7.572 0 4.52-2.848 8.158-6.8 8.158-1.328 0-2.577-.69-3.004-1.503 0 0-.657 2.5-.816 3.111-.296 1.141-1.101 2.566-1.639 3.442a12.03 12.03 0 003.397.485c6.622 0 11.988-5.365 11.988-11.988C23.997 5.367 18.639 0 12.017 0z"/>
+                                    </svg>
+                                    <span class="text-gray-700 font-medium group-hover:text-red-600 transition-colors duration-300">Pinterestboard</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="p-8 bg-[#D7A7B7]/5 rounded-3xl shadow-sm border border-gray-100">
+                            <h4 class="font-bold text-2xl mb-4 text-gray-800 flex items-center gap-3">🎁 Cadeautip</h4>
+                            <p class="text-gray-600 text-lg italic leading-relaxed">We zijn al ontzettend dankbaar met je aanwezigheid. Mocht je ons toch iets willen geven dan zou een bijdrage aan onze huwelijksreis erg welkom zijn!</p>
+                        </div>
+                        <div class="p-8 bg-[#D7A7B7]/5 rounded-3xl shadow-sm border border-gray-100">
+                            <h4 class="font-bold text-xl mb-2 text-gray-800">Parkeren</h4>
+                            <p class="text-gray-600">Er is ruime, gratis parkeergelegenheid direct bij De Havixhorst.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="contact" class="max-w-2xl mx-auto mt-20 p-10 bg-white rounded-3xl shadow-xl flex flex-col items-center text-center gap-6 border-t-8 border-[#B8860B]">
+                    <h2 class="font-display text-4xl font-bold text-gray-800">Nog vragen?</h2>
+                    <div class="relative">
+                        <img src="ceremoniemeesters.jpeg" loading="lazy" alt="Jip & Puk" class="w-32 h-32 rounded-full object-cover border-4 border-[#D7A7B7] shadow-lg">
+                    </div>
+                    <div>
+                        <p class="text-2xl font-bold text-[#D7A7B7]">Jip & Puk Stek</p>
+                        <p class="text-gray-600 font-medium italic">Ceremoniemeesters</p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-4 sm:gap-8 mt-2">
+                        <a href="tel:+31641774338" class="font-bold text-gray-700 hover:text-[#B8860B] transition">📞 +31 6 41774338</a>
+                        <a href="mailto:bruiloftwierdenbette@outlook.com" class="font-bold text-gray-700 hover:text-[#B8860B] transition">✉️ bruiloftwierdenbette@outlook.com</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-16 text-center font-display">
+        <p class="text-4xl mb-4">Wierd & Bette</p>
+        <p class="text-gray-500 font-sans tracking-widest uppercase text-sm">02 . 08 . 2026</p>
+    </footer>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, addDoc, collection } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // --- 1. PROGRAMMA WEERGAVE (URL Check) ---
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('g') === 'a') {
+            const progOntvangst = document.getElementById('prog-ontvangst');
+            const progDiner = document.getElementById('prog-diner');
+            const progAvondOntvangst = document.getElementById('prog-avond-ontvangst');
+            
+            if (progOntvangst) progOntvangst.style.display = 'none';
+            if (progDiner) progDiner.style.display = 'none';
+            if (progAvondOntvangst) progAvondOntvangst.innerText = 'Ontvangst';
+        }
+
+        // --- 2. FIREBASE CONFIGURATIE ---
+        const firebaseConfig = {
+            apiKey: "AIzaSyC19ashqWeuxrfsQ8sN1J5YIDwKmMs86P8",
+            authDomain: "trouw-website-7245a.firebaseapp.com",
+            projectId: "trouw-website-7245a",
+            storageBucket: "trouw-website-7245a.firebasestorage.app",
+            messagingSenderId: "1025347648187",
+            appId: "1:1025347648187:web:1b7d1e77cd99b46bed479e"
+        };
+        
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+        
+        const dbPathId = 'bette-wierd-bruiloft';
+        const ACCESS_CODES = { 'WB2026DAG': 'Daggast', 'WB2026': 'Avondgast' };
+        let isAuthReady = false;
+        let currentGuestType = null;
+
+        onAuthStateChanged(auth, async (user) => {
+            if (user) { isAuthReady = true; } 
+            else { await signInAnonymously(auth); }
+        });
+
+        // --- 3. COUNTDOWN TIMER ---
+        const weddingDate = new Date("Aug 2, 2026 16:15:00").getTime();
+        
+        // Caching van de DOM elementen voor betere performance
+        const daysEl = document.getElementById('days');
+        const hoursEl = document.getElementById('hours');
+        const minutesEl = document.getElementById('minutes');
+        const secondsEl = document.getElementById('seconds');
+
+        function updateTimer() {
+            const dist = weddingDate - new Date().getTime();
+            if (dist < 0) return;
+            
+            daysEl.innerText = Math.floor(dist / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+            hoursEl.innerText = Math.floor((dist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+            minutesEl.innerText = Math.floor((dist % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+            secondsEl.innerText = Math.floor((dist % (1000 * 60)) / 1000).toString().padStart(2, '0');
+        }
+        setInterval(updateTimer, 1000); 
+        updateTimer();
+
+        // --- 4. RSVP LOGICA ---
+        const rsvpForm = document.getElementById('rsvpForm');
+        const numSel = document.getElementById('numGuests');
+        const guestCont = document.getElementById('guestNamesContainer');
+        const codeInput = document.getElementById('accessCode');
+        const startRsvpBtn = document.getElementById('startRsvpButton');
+
+        // Functionaliteit voor Inloggen knop
+        startRsvpBtn.onclick = () => {
+            const code = codeInput.value.toUpperCase().trim();
+            currentGuestType = ACCESS_CODES[code];
+            
+            if (currentGuestType) {
+                document.getElementById('codeEntry').classList.add('hidden');
+                rsvpForm.classList.remove('hidden');
+                
+                if (currentGuestType === 'Avondgast') {
+                    document.getElementById('guestTypeMessage').innerText = `Welkom, Gast!`;
+                    document.getElementById('labelDinner').style.display = 'none';
+                    document.getElementById('dietaryWishesGroup').style.display = 'none';
+                } else {
+                    document.getElementById('guestTypeMessage').innerText = `Welkom, ${currentGuestType}!`;
+                    document.getElementById('labelDinner').style.display = 'flex';
+                    document.getElementById('dietaryWishesGroup').style.display = 'block';
+                }
+            } else { 
+                document.getElementById('codeError').classList.remove('hidden'); 
+            }
+        };
+
+        // NIEUW: Zorgt dat je op 'Enter' kan drukken na het invullen van de code
+        codeInput.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault(); // Voorkomt ongewenst herladen van de pagina
+                startRsvpBtn.click();   // Doet alsof er op de knop wordt geklikt
+            }
+        });
+
+        function renderFields() {
+            guestCont.innerHTML = '';
+            const num = parseInt(numSel.value, 10);
+            for (let i = 1; i <= num; i++) {
+                const div = document.createElement('div');
+                div.innerHTML = `<label class="text-sm font-bold text-gray-600">Naam Gast ${i}</label><input type="text" id="gName${i}" required class="w-full p-2 mt-1 border rounded-lg focus:ring-2 focus:ring-[#D7A7B7]">`;
+                guestCont.appendChild(div);
+            }
+        }
+        numSel.onchange = renderFields; 
+        renderFields();
+
+        rsvpForm.onsubmit = async (e) => {
+            e.preventDefault();
+            if (!isAuthReady) return;
+            
+            document.getElementById('loader').classList.remove('hidden');
+            document.getElementById('submitRsvp').disabled = true;
+            
+            try {
+                const guests = [];
+                const num = parseInt(numSel.value, 10);
+                for (let i = 1; i <= num; i++) {
+                    guests.push(document.getElementById(`gName${i}`).value);
+                }
+                
+                const data = {
+                    type: currentGuestType,
+                    contact: document.getElementById('contactName').value,
+                    email: document.getElementById('email').value,
+                    guests: guests,
+                    diet: currentGuestType === 'Daggast' ? document.getElementById('dietaryWishes').value : 'N/A',
+                    ceremony: document.getElementById('attendCeremony').checked,
+                    dinner: document.getElementById('attendDinner').checked,
+                    party: document.getElementById('attendParty').checked,
+                    timestamp: new Date().toISOString()
+                };
+                
+                await addDoc(collection(db, 'artifacts', dbPathId, 'public', 'data', 'rsvps'), data);
+                rsvpForm.innerHTML = `<div class="text-center py-10"><h3 class="text-3xl font-display text-gray-800">Bedankt voor jullie RSVP! ❤️</h3></div>`;
+            } catch (err) { 
+                console.error(err); 
+                alert("Fout bij verzenden."); 
+                document.getElementById('loader').classList.add('hidden');
+                document.getElementById('submitRsvp').disabled = false;
+            }
+        };
+
+        // --- 5. MOBIEL MENU ---
+        document.getElementById('menu-toggle').onclick = () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        };
+    </script>
+</body>
+</html>
