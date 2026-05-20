@@ -184,11 +184,10 @@
             </div>
         </section>
 
-        <section id="rsvp" class="py-24 bg-[#D7A7B7]/5 border-y border-gray-100">
+		<section id="rsvp" class="py-24 bg-[#D7A7B7]/5 border-y border-gray-100">
             <div class="max-w-3xl mx-auto px-6 text-center">
                 <h2 class="font-display text-5xl font-semibold mb-4 text-gray-800">Aanwezigheid</h2>
-                <p class="text-lg text-gray-600 mb-4">Gebruik de code op je uitnodiging om je aanwezigheid te bevestigen.</p>
-                <p class="text-sm text-[#D7A7B7] font-medium italic mb-10">We hebben ervoor gekozen om deze gelegenheid zonder kids te vieren. Bedankt voor jullie begrip.</p>
+                <p class="text-lg text-gray-600 mb-10">Gebruik de code op je uitnodiging om je aanwezigheid te bevestigen.</p>
 
                 <div id="codeEntry" class="bg-white p-10 rounded-3xl shadow-xl space-y-6 border border-gray-100 max-w-md mx-auto">
                     <input type="text" id="accessCode" class="w-full p-4 border-2 border-[#D7A7B7]/20 rounded-xl text-center text-2xl font-bold uppercase" placeholder="CODE">
@@ -198,31 +197,73 @@
 
                 <form id="rsvpForm" class="hidden bg-white p-10 rounded-3xl shadow-xl space-y-8 border border-gray-100 text-left">
                     <h3 id="guestTypeMessage" class="text-center font-display text-3xl text-[#D7A7B7]"></h3>
+                    
                     <div class="grid md:grid-cols-2 gap-6">
-                        <div><label class="block font-bold mb-2">Naam Contactpersoon</label><input type="text" id="contactName" required class="w-full p-3 bg-gray-50 border rounded-xl" placeholder="Volledige naam"></div>
-                        <div><label class="block font-bold mb-2">E-mailadres</label><input type="email" id="email" required class="w-full p-3 bg-gray-50 border rounded-xl" placeholder="je@email.nl"></div>
+                        <div>
+                            <label class="block font-bold mb-2">Naam Contactpersoon</label>
+                            <input type="text" id="contactName" required class="w-full p-3 bg-gray-50 border rounded-xl" placeholder="Volledige naam">
+                        </div>
+                        <div>
+                            <label class="block font-bold mb-2">E-mailadres</label>
+                            <input type="email" id="email" required class="w-full p-3 bg-gray-50 border rounded-xl" placeholder="je@email.nl">
+                        </div>
                     </div>
+                    
                     <div>
                         <label class="block font-bold mb-2">Aantal personen</label>
-                        <select id="numGuests" class="w-full p-3 bg-gray-50 border rounded-xl"><option value="1">1 Persoon</option><option value="2" selected>2 Personen</option><option value="3">3 Personen</option><option value="4">4 Personen</option><option value="5">5 Personen</option><option value="6">6 Personen</option></select>
+                        <select id="numGuests" class="w-full p-3 bg-gray-50 border rounded-xl">
+                            <option value="1">1 Persoon</option>
+                            <option value="2" selected>2 Personen</option>
+                            <option value="3">3 Personen</option>
+                            <option value="4">4 Personen</option>
+                            <option value="5">5 Personen</option>
+                            <option value="6">6 Personen</option>
+                        </select>
+                        
+                        <!-- Nieuw en opvallender 'No Kids' blokje direct onder de selectie -->
+                        <div class="mt-4 p-4 bg-[#D7A7B7]/10 border-l-4 border-[#D7A7B7] rounded-r-xl">
+                            <p class="text-sm text-gray-700 font-medium flex items-start gap-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#D7A7B7] shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                                </svg>
+                                <span><strong>Let op:</strong> We hebben ervoor gekozen om deze gelegenheid zonder kids te vieren. Bedankt voor jullie begrip.</span>
+                            </p>
+                        </div>
                     </div>
+                    
                     <div id="guestNamesContainer" class="p-4 bg-gray-50 rounded-xl space-y-4"></div>
                     
                     <div id="attendanceGroup">
                         <label class="block font-bold mb-3 italic">Ik/wij zijn aanwezig bij:</label>
                         <div class="space-y-3">
-                            <label class="flex items-center gap-3 p-4 bg-white border border-gray-100 rounded-xl cursor-pointer" id="labelDinner"><input type="checkbox" id="attendDinner" class="w-6 h-6 accent-[#D7A7B7]"> <span class="text-lg">Diner</span></label>
-                            <label class="flex items-center gap-3 p-4 bg-white border border-gray-100 rounded-xl cursor-pointer"><input type="checkbox" id="attendCeremony" class="w-6 h-6 accent-[#D7A7B7]"> <span class="text-lg">Ceremonie</span></label>
-                            <label class="flex items-center gap-3 p-4 bg-white border border-gray-100 rounded-xl cursor-pointer"><input type="checkbox" id="attendParty" class="w-6 h-6 accent-[#D7A7B7]"> <span class="text-lg">Feestavond</span></label>
+                            <label class="flex items-center gap-3 p-4 bg-white border border-gray-100 rounded-xl cursor-pointer" id="labelDinner">
+                                <input type="checkbox" id="attendDinner" class="w-6 h-6 accent-[#D7A7B7]"> 
+                                <span class="text-lg">Diner</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-4 bg-white border border-gray-100 rounded-xl cursor-pointer">
+                                <input type="checkbox" id="attendCeremony" class="w-6 h-6 accent-[#D7A7B7]"> 
+                                <span class="text-lg">Ceremonie</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-4 bg-white border border-gray-100 rounded-xl cursor-pointer">
+                                <input type="checkbox" id="attendParty" class="w-6 h-6 accent-[#D7A7B7]"> 
+                                <span class="text-lg">Feestavond</span>
+                            </label>
                         </div>
                     </div>
                     
-                    <div id="dietaryWishesGroup"><label class="block font-bold mb-2 text-gray-700">Dieetwensen / Allergieën</label><textarea id="dietaryWishes" rows="2" class="w-full p-3 bg-gray-50 border rounded-xl" placeholder="Bijv. Vega, Glutenvrij..."></textarea></div>
-                    <button type="submit" id="submitRsvp" class="w-full btn-primary py-4 rounded-xl text-xl font-bold flex items-center justify-center gap-2"><span id="btnText">Bevestigen</span><div id="loader" class="hidden animate-spin h-5 w-5 border-2 border-white border-t-transparent rounded-full"></div></button>
+                    <div id="dietaryWishesGroup">
+                        <label class="block font-bold mb-2 text-gray-700">Dieetwensen / Allergieën</label>
+                        <textarea id="dietaryWishes" rows="2" class="w-full p-3 bg-gray-50 border rounded-xl" placeholder="Bijv. Vega, Glutenvrij..."></textarea>
+                    </div>
+                    
+                    <button type="submit" id="submitRsvp" class="w-full btn-primary py-4 rounded-xl text-xl font-bold flex items-center justify-center gap-2">
+                        <span id="btnText">Bevestigen</span>
+                        <div id="loader" class="hidden animate-spin h-5 w-5 border-2 border-white border-t-transparent rounded-full"></div>
+                    </button>
                 </form>
             </div>
         </section>
-
+		
         <section id="info" class="py-24 bg-white">
             <div class="max-w-6xl mx-auto px-6">
                 <h2 class="font-display text-5xl font-semibold mb-16 text-gray-800 text-center">Praktische Informatie</h2>
