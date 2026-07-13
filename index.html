@@ -167,7 +167,7 @@
                             <a href="https://maps.google.com/?q=Schiphorsterweg+34-36,+7966+AC+De+Schiphorst" target="_blank" class="inline-block text-[#B8860B] font-bold hover:underline">Open in Google Maps →</a>
                             <span class="hidden sm:inline-block text-gray-300">|</span>
                             
-                            <a id="agenda-btn" href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20260802T140000Z%0ADTEND:20260802T220000Z%0ASUMMARY:Bruiloft Wierd %26 Bette%0ADESCRIPTION:Wij vieren onze liefde op landgoed De Havixhorst!%0ALOCATION:Schiphorsterweg 34-36\, 7966 AC De Schiphorst%0AEND:VEVENT%0AEND:VCALENDAR" 
+                            <a id="agenda-btn" href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20260802T161500%0ADTEND:20260802T235900%0ASUMMARY:Bruiloft Wierd %26 Bette%0ADESCRIPTION:Wij vieren onze liefde op landgoed De Havixhorst!%0ALOCATION:Schiphorsterweg 34-36\, 7966 AC De Schiphorst%0AEND:VEVENT%0AEND:VCALENDAR" 
 							   download="Bruiloft_Wierd_en_Bette.ics" 
 							   class="group flex items-center space-x-2 bg-white px-3 py-1.5 rounded-full border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 text-sm">
                                 <svg class="w-4 h-4 text-gray-500 group-hover:text-[#D7A7B7] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -343,10 +343,10 @@
 		    if (progDiner) progDiner.style.display = 'none';
 		    if (progAvondOntvangst) progAvondOntvangst.innerText = 'Ontvangst';
 		
-		    // Past de starttijd van de .ics link aan naar 19:00 uur (170000Z in UTC)
+		    // Past de starttijd van de .ics link aan naar 19:00 uur lokale tijd
 		    const agendaBtn = document.getElementById('agenda-btn');
 		    if (agendaBtn) {
-		        agendaBtn.href = "data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20260802T170000Z%0ADTEND:20260802T220000Z%0ASUMMARY:Bruiloft Wierd %26 Bette%0ADESCRIPTION:Wij vieren onze liefde op landgoed De Havixhorst!%0ALOCATION:Schiphorsterweg 34-36\, 7966 AC De Schiphorst%0AEND:VEVENT%0AEND:VCALENDAR";
+		        agendaBtn.href = "data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20260802T190000%0ADTEND:20260802T235900%0ASUMMARY:Bruiloft Wierd %26 Bette%0ADESCRIPTION:Wij vieren onze liefde op landgoed De Havixhorst!%0ALOCATION:Schiphorsterweg 34-36\, 7966 AC De Schiphorst%0AEND:VEVENT%0AEND:VCALENDAR";
 		    }
 		}
 
