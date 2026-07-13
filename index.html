@@ -167,9 +167,9 @@
                             <a href="https://maps.google.com/?q=Schiphorsterweg+34-36,+7966+AC+De+Schiphorst" target="_blank" class="inline-block text-[#B8860B] font-bold hover:underline">Open in Google Maps →</a>
                             <span class="hidden sm:inline-block text-gray-300">|</span>
                             
-                            <a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20260802T140000Z%0ADTEND:20260802T220000Z%0ASUMMARY:Bruiloft Wierd %26 Bette%0ADESCRIPTION:Wij vieren onze liefde op landgoed De Havixhorst!%0ALOCATION:Schiphorsterweg 34-36\, 7966 AC De Schiphorst%0AEND:VEVENT%0AEND:VCALENDAR" 
-                               download="Bruiloft_Wierd_en_Bette.ics" 
-                               class="group flex items-center space-x-2 bg-white px-3 py-1.5 rounded-full border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 text-sm">
+                            <a id="agenda-btn" href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20260802T140000Z%0ADTEND:20260802T220000Z%0ASUMMARY:Bruiloft Wierd %26 Bette%0ADESCRIPTION:Wij vieren onze liefde op landgoed De Havixhorst!%0ALOCATION:Schiphorsterweg 34-36\, 7966 AC De Schiphorst%0AEND:VEVENT%0AEND:VCALENDAR" 
+							   download="Bruiloft_Wierd_en_Bette.ics" 
+							   class="group flex items-center space-x-2 bg-white px-3 py-1.5 rounded-full border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 text-sm">
                                 <svg class="w-4 h-4 text-gray-500 group-hover:text-[#D7A7B7] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                                 </svg>
@@ -332,17 +332,23 @@
         import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, addDoc, collection } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // --- 1. PROGRAMMA WEERGAVE (URL Check) ---
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('g') === 'a') {
-            const progOntvangst = document.getElementById('prog-ontvangst');
-            const progDiner = document.getElementById('prog-diner');
-            const progAvondOntvangst = document.getElementById('prog-avond-ontvangst');
-            
-            if (progOntvangst) progOntvangst.style.display = 'none';
-            if (progDiner) progDiner.style.display = 'none';
-            if (progAvondOntvangst) progAvondOntvangst.innerText = 'Ontvangst';
-        }
+        // --- 1. PROGRAMMA WEERGAVE EN AGENDA LINK (URL Check) ---
+		const urlParams = new URLSearchParams(window.location.search);
+		if (urlParams.get('g') === 'a') {
+		    const progOntvangst = document.getElementById('prog-ontvangst');
+		    const progDiner = document.getElementById('prog-diner');
+		    const progAvondOntvangst = document.getElementById('prog-avond-ontvangst');
+		    
+		    if (progOntvangst) progOntvangst.style.display = 'none';
+		    if (progDiner) progDiner.style.display = 'none';
+		    if (progAvondOntvangst) progAvondOntvangst.innerText = 'Ontvangst';
+		
+		    // Past de starttijd van de .ics link aan naar 19:00 uur (170000Z in UTC)
+		    const agendaBtn = document.getElementById('agenda-btn');
+		    if (agendaBtn) {
+		        agendaBtn.href = "data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20260802T170000Z%0ADTEND:20260802T220000Z%0ASUMMARY:Bruiloft Wierd %26 Bette%0ADESCRIPTION:Wij vieren onze liefde op landgoed De Havixhorst!%0ALOCATION:Schiphorsterweg 34-36\, 7966 AC De Schiphorst%0AEND:VEVENT%0AEND:VCALENDAR";
+		    }
+		}
 
         // --- 2. FIREBASE CONFIGURATIE ---
         const firebaseConfig = {
